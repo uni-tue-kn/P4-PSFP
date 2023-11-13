@@ -1,0 +1,412 @@
+{
+    "simulation": {
+        "enabled": false,
+        "duration": 20,
+        "json_file": "plots/data/flow_meter_drop_yellow.json",
+        "csv_file": "plots/data/csv/flow_meter_small.csv",
+        "monitor_flow_meter_id": 100,
+        "monitor_stream_gate_id": null
+    },
+    "streams": [
+        {
+            "vid": 42,
+            "stream_handle": 7,
+            "eth_dst": "ff:ff:ff:ff:ff:ff",
+            "active": true,
+            "overwrite_vid": 57,
+            "overwrite_pcp": 5,
+            "dst_port": 1234,
+            "stream_block_enable": true
+        },
+        {
+            "vid": 42,
+            "stream_handle": 8,
+            "eth_dst": "ff:ff:ff:ff:ff:ff",
+            "ipv4_src": "10.1.1.2",
+            "ipv4_dst": "10.1.1.2",
+            "ipv4_diffserv": 0,
+            "ipv4_port": 6,
+            "src_port": 4321,
+            "dst_port": 4321,
+            "stream_block_enable": true
+        },
+        {
+            "vid": 42,
+            "stream_handle": 9,
+            "dst_port": 1337,
+            "stream_block_enable": true
+        },
+        {
+            "vid": 1337,
+            "stream_handle": 10,
+            "ipv4_src": "192.168.100.1",
+            "stream_block_enable": true
+        },
+        {
+            "vid": 1337,
+            "stream_handle": 11,
+            "ipv4_src": "1.2.3.4",
+            "stream_block_enable": false
+        },
+        {
+            "vid": 1337,
+            "stream_handle": 12,
+            "ipv4_src": "5.6.7.8",
+            "stream_block_enable": false
+        },
+        {
+            "vid": 1337,
+            "stream_handle": 13,
+            "ipv4_src": "9.10.11.12",
+            "stream_block_enable": false
+        }
+    ],
+    "stream_filters": [
+        {
+            "stream_handle": 7,
+            "stream_gate_instance": 2,
+            "max_sdu": 1500,
+            "pcp": "*",
+            "flow_meter_instance": 200
+        },
+        {
+            "stream_handle": 8,
+            "stream_gate_instance": 2,
+            "max_sdu": 1500,
+            "pcp": 1,
+            "flow_meter_instance": 200
+        },
+        {
+            "stream_handle": 9,
+            "stream_gate_instance": 3,
+            "max_sdu": 1500,
+            "pcp": 2,
+            "flow_meter_instance": 300
+        },
+        {
+            "stream_handle": 10,
+            "stream_gate_instance": 1,
+            "max_sdu": 1500,
+            "pcp": "*",
+            "flow_meter_instance": 300
+        },
+        {
+            "stream_handle": 11,
+            "stream_gate_instance": 2,
+            "max_sdu": 9500,
+            "pcp": "*",
+            "flow_meter_instance": 301
+        },
+        {
+            "stream_handle": 12,
+            "stream_gate_instance": 6,
+            "max_sdu": 9500,
+            "pcp": "*",
+            "flow_meter_instance": 302
+        },
+        {
+            "stream_handle": 13,
+            "stream_gate_instance": 1,
+            "max_sdu": 9500,
+            "pcp": "*",
+            "flow_meter_instance": 302
+        }
+    ],
+    "schedule_to_port": [
+        {
+            "schedule": "FIFTYFIFTY",
+            "port": 180
+        },
+        {
+            "schedule": "FIFTYFIFTY",
+            "port": 188
+        },
+        {
+            "schedule": "FIFTYFIFTY",
+            "port": 40
+        },
+        {
+            "schedule": "OPEN",
+            "port": 32
+        }
+    ],
+    "stream_gates": [
+        {
+            "stream_gate_id": 1,
+            "ipv": 8,
+            "schedule": "OPEN",
+            "gate_closed_due_to_invalid_rx_enable": false,
+            "gate_closed_due_to_octets_exceeded_enable": false
+        },
+        {
+            "stream_gate_id": 2,
+            "ipv": 8,
+            "schedule": "FIFTYFIFTY",
+            "gate_closed_due_to_invalid_rx_enable": false,
+            "gate_closed_due_to_octets_exceeded_enable": false
+        },
+        {
+            "stream_gate_id": 3,
+            "ipv": 8,
+            "schedule": "1-4-2-1",
+            "gate_closed_due_to_invalid_rx_enable": false,
+            "gate_closed_due_to_octets_exceeded_enable": false
+        },
+        {
+            "stream_gate_id": 4,
+            "ipv": 8,
+            "schedule": "1-4-2-1_short",
+            "gate_closed_due_to_invalid_rx_enable": false,
+            "gate_closed_due_to_octets_exceeded_enable": false
+        },
+        {
+            "stream_gate_id": 5,
+            "ipv": 8,
+            "schedule": "FIFTYFIFTY_short",
+            "gate_closed_due_to_invalid_rx_enable": false,
+            "gate_closed_due_to_octets_exceeded_enable": false
+        },
+        {
+            "stream_gate_id": 6,
+            "ipv": 8,
+            "schedule": "FIFTYFIFTY_INVERTED",
+            "gate_closed_due_to_invalid_rx_enable": false,
+            "gate_closed_due_to_octets_exceeded_enable": false
+        },
+        {
+            "stream_gate_id": 7,
+            "ipv": 8,
+            "schedule": "FIFTYFIFTY_INVERTED_short",
+            "gate_closed_due_to_invalid_rx_enable": false,
+            "gate_closed_due_to_octets_exceeded_enable": false
+        }
+    ],
+    "flow_meters": [
+        {
+            "flow_meter_id": 100,
+            "cir_kbps": 510000,
+            "pir_kbps": 720000,
+            "cbs": 1000,
+            "pbs": 2000,
+            "drop_yellow": false,
+            "mark_red": false,
+            "color_aware": false
+        },
+        {
+            "flow_meter_id": 200,
+            "cir_kbps": 80000000,
+            "pir_kbps": 90000000,
+            "cbs": 1000,
+            "pbs": 2000,
+            "drop_yellow": false,
+            "mark_red": false,
+            "color_aware": false
+        },
+        {
+            "flow_meter_id": 300,
+            "cir_kbps": 110000000,
+            "pir_kbps": 120000000,
+            "cbs": 1000,
+            "pbs": 2000,
+            "drop_yellow": false,
+            "mark_red": true,
+            "color_aware": false
+        },
+        {
+            "flow_meter_id": 301,
+            "cir_kbps": 110000000,
+            "pir_kbps": 120000000,
+            "cbs": 1000,
+            "pbs": 2000,
+            "drop_yellow": false,
+            "mark_red": false,
+            "color_aware": false
+        },
+        {
+            "flow_meter_id": 302,
+            "cir_kbps": 110000000,
+            "pir_kbps": 120000000,
+            "cbs": 1000,
+            "pbs": 2000,
+            "drop_yellow": false,
+            "mark_red": false,
+            "color_aware": false
+        },
+        {
+            "flow_meter_id": 400,
+            "cir_kbps": 80000000,
+            "pir_kbps": 90000000,
+            "cbs": 1280,
+            "pbs": 2000,
+            "drop_yellow": false,
+            "mark_red": false,
+            "color_aware": false
+        },
+        {
+            "flow_meter_id": 500,
+            "cir_kbps": 100000000,
+            "pir_kbps": 100000001,
+            "cbs": 1,
+            "pbs": 2,
+            "drop_yellow": false,
+            "mark_red": false,
+            "color_aware": false
+        }
+    ],
+    "gate_schedules": [
+        {
+            "name": "OPEN",
+            "period": 400000000,
+            "time_shift": 0,
+            "intervals": [
+                {
+                    "low": 0,
+                    "high": 400000000,
+                    "state": 1,
+                    "ipv": 0,
+                    "octets": 500000
+                }
+            ]
+        },
+        {
+            "name": "FIFTYFIFTY",
+            "period": 400000000,
+            "time_shift": 0,
+            "intervals": [
+                {
+                    "low": 0,
+                    "high": 200000000,
+                    "state": 1,
+                    "ipv": 0,
+                    "octets": 500000
+                },
+                {
+                    "low": 200000000,
+                    "high": 400000000,
+                    "state": 0,
+                    "ipv": 0,
+                    "octets": 500000
+                }
+            ]
+        },
+        {
+            "name": "FIFTYFIFTY_INVERTED",
+            "period": 400000000,
+            "time_shift": 0,
+            "intervals": [
+                {
+                    "low": 200000000,
+                    "high": 400000000,
+                    "state": 1,
+                    "ipv": 0,
+                    "octets": 500000
+                }
+            ]
+        },
+        {
+            "name": "FIFTYFIFTY_short",
+            "period": 400000,
+            "time_shift": 0,
+            "intervals": [
+                {
+                    "low": 0,
+                    "high": 200000,
+                    "state": 1,
+                    "ipv": 2,
+                    "octets": 500000
+                },
+                {
+                    "low": 200000,
+                    "high": 400000,
+                    "state": 0,
+                    "ipv": 2,
+                    "octets": 500000
+                }
+            ]
+        },
+        {
+            "name": "FIFTYFIFTY_INVERTED_short",
+            "period": 400000,
+            "time_shift": 0,
+            "intervals": [
+                {
+                    "low": 200000,
+                    "high": 400000,
+                    "state": 1,
+                    "ipv": 1,
+                    "octets": 500000
+                }
+            ]
+        },
+        {
+            "name": "1-4-2-1",
+            "period": 800000000,
+            "time_shift": 0,
+            "intervals": [
+                {
+                    "low": 0,
+                    "high": 100000000,
+                    "state": 1,
+                    "ipv": 2,
+                    "octets": 500000
+                },
+                {
+                    "low": 100000000,
+                    "high": 500000000,
+                    "state": 0,
+                    "ipv": 3,
+                    "octets": 500000
+                },
+                {
+                    "low": 500000000,
+                    "high": 700000000,
+                    "state": 1,
+                    "ipv": 5,
+                    "octets": 500000
+                },
+                {
+                    "low": 700000000,
+                    "high": 800000000,
+                    "state": 0,
+                    "ipv": 8,
+                    "octets": 500000
+                }
+            ]
+        },
+        {
+            "name": "1-4-2-1_short",
+            "period": 800000,
+            "time_shift": 0,
+            "intervals": [
+                {
+                    "low": 0,
+                    "high": 100000,
+                    "state": 1,
+                    "ipv": 2,
+                    "octets": 500000
+                },
+                {
+                    "low": 100000,
+                    "high": 500000,
+                    "state": 0,
+                    "ipv": 3,
+                    "octets": 500000
+                },
+                {
+                    "low": 500000,
+                    "high": 700000,
+                    "state": 1,
+                    "ipv": 5,
+                    "octets": 500000
+                },
+                {
+                    "low": 700000,
+                    "high": 800000,
+                    "state": 0,
+                    "ipv": 8,
+                    "octets": 500000
+                }
+            ]
+        }
+    ]
+}
